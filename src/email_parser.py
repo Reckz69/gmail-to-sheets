@@ -61,7 +61,7 @@ def parse_email(message):
     headers = payload.get("headers", [])
 
 
-    content = _extract_body(payload).strip
+    content = _extract_body(payload).strip()
     content = clean_html(content)
 
     email_data = {

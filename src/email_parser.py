@@ -1,4 +1,7 @@
+
+from bs4 import BeautifulSoup
 import base64
+
 
 
 def _get_header(headers, name):
@@ -40,16 +43,28 @@ def _extract_body(payload):
 
     return ""
 
+def clean_html(text):
+    soup = BeautifulSoup(text, "html.parser")
+
+    # Remove images
+    for img in soup.find_all("img"):
+        img.decompose()
+
+    return soup.get_text(separator=" ", strip=True)
 
 def parse_email(message):
     payload = message.get("payload", {})
     headers = payload.get("headers", [])
 
+
+    content = _extract_body(payload).strip
+    content = clean_html(content)
+
     email_data = {
         "from": _get_header(headers, "From"),
         "subject": _get_header(headers, "Subject"),
         "date": _get_header(headers, "Date"),
-        "content": _extract_body(payload).strip()
+        "content": content
     }
 
     return email_data

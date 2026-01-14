@@ -44,6 +44,9 @@ def _extract_body(payload):
     return ""
 
 def clean_html(text):
+    if not text or not isinstance(text, str):
+        return ""
+
     soup = BeautifulSoup(text, "html.parser")
 
     # Remove images
@@ -51,6 +54,7 @@ def clean_html(text):
         img.decompose()
 
     return soup.get_text(separator=" ", strip=True)
+
 
 def parse_email(message):
     payload = message.get("payload", {})

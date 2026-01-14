@@ -1,3 +1,9 @@
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+
 from gmail_service import (
     get_gmail_service,
     fetch_unread_emails,

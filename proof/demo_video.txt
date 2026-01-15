@@ -1,0 +1,6 @@
+Dur to the large size of the screen Recording, the video has been uploaded on the cloudinary server.
+Please access it for the given link.
+
+cloudinary_link : https://player.cloudinary.com/embed/?cloud_name=dlx1dpbar&public_id=xn1ot7lxjmkpq0czcegk
+
+use command+shift to directly access the video from here , otherwise copy the link
